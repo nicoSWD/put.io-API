@@ -61,11 +61,11 @@ $put->user->acctoken();
  *
 **/
 $put->subscriptions->list();
-$put->subscriptions->create();
-$put->subscriptions->edit();
-$put->subscriptions->delete();
-$put->subscriptions->pause();
-$put->subscriptions->info();
+$put->subscriptions->create(['title' => 'My title', 'url' => 'My URL', 'do_filters' => 'Filters', 'dont_filters' => 'Filters', 'parent_folder_id' => 1234, 'paused' => '']);
+$put->subscriptions->edit(['id' => 1234, 'title' => 'My title', 'url' => 'My URL']);
+$put->subscriptions->delete(['id' => 1234]);
+$put->subscriptions->pause(['id' => 1234]);
+$put->subscriptions->info(['id' => 1234]);
 
 
 ?>
