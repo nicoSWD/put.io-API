@@ -18,12 +18,12 @@ $put = new PutIO('api_key', 'api_secret');
  *
 **/
 $put->files->list();
-$put->files->create_dir(['name' => 'My Folder', 'parent_id' => 1234]);
-$put->files->info(['id' => 1234]);
-$put->files->rename(['id' => 1234, 'name' => 'New name']);
-$put->files->move(['id' => 1234, 'parent_id' => 5678]);
-$put->files->delete(['id' => 1234]);
-$put->files->search(['query' => 'my query']);
+$put->files->create_dir($folderName, $parentID);
+$put->files->info($fileID);
+$put->files->rename($fileID, $newName);
+$put->files->move($fileID, $parentID);
+$put->files->delete($fileID);
+$put->files->search($queryString);
 $put->files->dirmap();
 
 /**
@@ -31,22 +31,22 @@ $put->files->dirmap();
  *
 **/
 $put->messages->list();
-$put->messages->delete(['id' => 1234]);
+$put->messages->delete($messageID);
 
 /**
  * Active transfers methods
  *
 **/
 $put->transfers->list();
-$put->transfers->cancel(['id' => 1234]);
-$put->transfers->add(['links' => ['link 1', 'link 2', 'link 3']]);
+$put->transfers->cancel($transferID);
+$put->transfers->add([$url1, $url2, $url3]);
 
 /**
  * URL handler methods
  *
 **/
-$put->urls->analyze(['urls' => ['url 1', 'url 2', 'url 3']]);
-$put->urls->extracturls(['txt' => 'Text with URLs']);
+$put->urls->analyze([$url1, $url2, $url3]);
+$put->urls->extracturls($HTMLorText);
 
 /**
  * User methods
@@ -61,11 +61,11 @@ $put->user->acctoken();
  *
 **/
 $put->subscriptions->list();
-$put->subscriptions->create(['title' => 'My title', 'url' => 'My URL', 'do_filters' => 'Filters', 'dont_filters' => 'Filters', 'parent_folder_id' => 1234, 'paused' => '']);
-$put->subscriptions->edit(['id' => 1234, 'title' => 'My title', 'url' => 'My URL']);
-$put->subscriptions->delete(['id' => 1234]);
-$put->subscriptions->pause(['id' => 1234]);
-$put->subscriptions->info(['id' => 1234]);
+$put->subscriptions->create($title, $url, $doFilters, $dontFilters, $parentID, $pause);
+$put->subscriptions->edit($subscriptionID, $newTitle, $newURL);
+$put->subscriptions->delete($subscriptionID);
+$put->subscriptions->pause($subscriptionID);
+$put->subscriptions->info($subscriptionID);
 
 
 ?>
