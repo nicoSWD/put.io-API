@@ -232,9 +232,9 @@ class PutIO
 }
 
 
-class PutIOInvalidClassException extends \Exception {}
-class PutIOMissingClassException extends \Exception {}
-class PutIONoResponseException extends \Exception {}
-class PutIOErrorException extends \Exception {}
+class PutIOInvalidClassException extends Exception {}
+class PutIOMissingClassException extends Exception {}
+class PutIONoResponseException extends Exception {}
+class PutIOErrorException extends Exception {}
 
 ?>
