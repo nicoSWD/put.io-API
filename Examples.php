@@ -2,7 +2,7 @@
 
 /**
  *
- * For a full API documentation including all parameters, etc, check out:
+ * For a full API documentation including all parameters, return values, etc, check out:
  * https://put.io/service/api/server
  *
  * For your API key and secret, log into put.io, and go to:
