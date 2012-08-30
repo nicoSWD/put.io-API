@@ -1,7 +1,7 @@
 put.io API Class
 ===========================
 
-A simple, but powerful PHP class for [put.io](https://put.io/)'s API (version 1)
+A simple, but powerful PHP class for [put.io](https://put.io/)'s API (version 1).
 Current requirements are PHP 5.4, cURL extension, and JSON extension.
 
 A [modified version](/nicoSWD/put.io-API/blob/master/PutIO-php5.1.php) for PHP >= 5 is also included.
