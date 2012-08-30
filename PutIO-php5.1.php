@@ -169,7 +169,7 @@ class PutIO
         
             curl_setopt_array($this->ch, array(
                 CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_USERAGENT      => 'nicoswd-putIO/' . static::CLASS_VERSION,
+                CURLOPT_USERAGENT      => 'nicoswd-putIO/' . self::CLASS_VERSION,
                 CURLOPT_HTTPHEADER     => array('Accept: application/json')
             ));
         }
@@ -189,7 +189,7 @@ class PutIO
             }
         }
         
-        $URL  = static::API_URL . $this->class . '?method=' . $method;
+        $URL  = self::API_URL . $this->class . '?method=' . $method;
         $data = json_encode(array('api_key' => $this->API_KEY, 'api_secret' => $this->API_SECRET, 'params' => $params), JSON_FORCE_OBJECT);
         
         curl_setopt_array($this->ch, array(
