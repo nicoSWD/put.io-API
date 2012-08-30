@@ -64,6 +64,51 @@ class PutIO
     
     
     /**
+     * Parameter lookup array. Instead of having to supply an array with the parameters,
+     * they now can be passed directly.
+     *
+     * E.g.: Insted of having to do this: $putio->files->search(['query' => 'my query']);
+     * you can do it like this: $putio->files->search('my query');
+     *
+    **/
+    protected $paramLookup = array(
+        'files' => array(
+            'list'        => array('id', 'parent_id', 'offset', 'limit', 'type', 'orderby'),
+            'create_dir'  => array('name', 'parent_id'),
+            'files'       => array('id'),
+            'rename'      => array('id', 'name'),
+            'move'        => array('id', 'parent_id'),
+            'delete'      => array('id'),
+            'search'      => array('query')
+        ),
+        
+        'messages' => array(
+            'delete'      => array('id'),
+        ),
+        
+        'transfers' => array(
+            'cancel'      => array('id'),
+            'add'         => array('links')
+        ),
+        
+        'urls' => array(
+            'analyze'     => array('urls'),
+            'extracturls' => array('txt')
+        ),
+        
+        'user' => array(),
+        
+        'subscriptions' => array(
+            'create'      => array('title', 'url', 'do_filters', 'dont_filters', 'parent_folder_id', 'paused'),
+            'edit'        => array('id', 'title', 'url'),
+            'delete'      => array('id'),
+            'pause'       => array('id'),
+            'info'        => array('id')
+        )
+    );
+
+    
+    /**
      * Class constructor with optional put.io credentials. 
      *
     **/
@@ -83,7 +128,7 @@ class PutIO
     **/
     public function __get($name)
     {
-        if (!in_array($name, array('files', 'messages', 'transfers', 'urls', 'user', 'subscriptions'), true))
+        if (!isset($this->paramLookup[$name]))
         {
             throw new PutIOInvalidClassException("Invalid class '{$name}' supplied.");
         }
@@ -129,7 +174,21 @@ class PutIO
             ));
         }
         
-        $params = $params ? $params[0] : array();
+        $params = array();
+        
+        if (isset($this->paramLookup[$this->class][$method]))
+        {
+            $args = func_get_arg(1);
+            
+            foreach ($this->paramLookup[$this->class][$method] AS $key => $param)
+            {
+                if (array_key_exists($key, $args))
+                {
+                    $params[$param] = $args[$key];
+                }
+            }
+        }
+        
         $URL  = static::API_URL . $this->class . '?method=' . $method;
         $data = json_encode(array('api_key' => $this->API_KEY, 'api_secret' => $this->API_SECRET, 'params' => $params), JSON_FORCE_OBJECT);
         
@@ -148,7 +207,7 @@ class PutIO
             return $response;
         }
         
-        return '';
+        return false;
     }
     
     
