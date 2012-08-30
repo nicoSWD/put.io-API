@@ -1,11 +1,11 @@
-PHP put.io API Wrapper/Class
+PHP PUT.IO API Wrapper Class
 ============================
-**API Version 1**
+**(API Version 1)**
 
 A simple, but powerful PHP class for [put.io](https://put.io/)'s API (version 1).
 Current requirements are: the cURL extension, and the JSON extension.
 
-There's [one version](/nicoSWD/put.io-API/blob/master/PutIO.php) for PHP 5.4, and
+There's [one version](/nicoSWD/put.io-API/blob/master/PutIO.php) for PHP >= 5.4, and
 [another version](/nicoSWD/put.io-API/blob/master/PutIO-php5.1.php) for PHP >= 5.1
 
 See the [Examples.php](/nicoSWD/put.io-API/blob/master/Examples.php) file and
