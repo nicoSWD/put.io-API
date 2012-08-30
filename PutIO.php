@@ -20,6 +20,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
+ * THIS CLASS REQUIRES PHP 5.4 OR ABOVE! IF YOU'RE USING A VERSION BELOW THAT,
+ * USE THE OTHER CLASS INSTEAD (PutIO-php5.1.php)
+ *
 **/
 
 class PutIO
