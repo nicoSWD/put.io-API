@@ -2,6 +2,8 @@ PHP PUT.IO API Wrapper Class
 ============================
 **(API Version 1)**
 
+**NOTE:** API version 1 will be deprecated soon. Use [this newer class](https://github.com/nicoSWD/put.io-api-v2) for version 2!
+
 A simple, but powerful PHP class for [put.io](https://put.io/)'s API (version 1).
 Current requirements are: the cURL extension, and the JSON extension.
 
